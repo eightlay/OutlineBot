@@ -15,5 +15,5 @@ Give admin rights by Telegram user ID
 ```
 Deprive admin rights by Telegram user ID
 ```
->> outlinebot admin -u <user_id>
+>> outlinebot admin -u <user_id> -d
 ```
