@@ -5,6 +5,11 @@ Telegram bot for your Outline server
 <img src="client_example.jpg" alt="client usage" width="200"/>
 
 ## Server:
+Export Telegram bot token and Outline management API URL to environment
+```
+export TGTOKEN=<tbot token>
+export OUTLINEAPI=<management API URL>
+```
 Run server
 ```
 >> outlinebot run
