@@ -24,18 +24,6 @@ type Key struct {
 	AccessURL string `json:"accessUrl"`
 }
 
-func getURL(name string) string {
-	switch name {
-	case "newAccessKey":
-		return oulineHost + "access-keys/"
-	case "getDataTransfered":
-		return oulineHost + "metrics/transfer/"
-	case "getAccessURL":
-		return oulineHost + "access-keys/"
-	}
-	return oulineHost
-}
-
 func newAccessKey(username string) (string, string, error) {
 	resp, err := http.Post(
 		getURL("newAccessKey"), "application/json",
