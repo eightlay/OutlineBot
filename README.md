@@ -1,6 +1,5 @@
 # Outline Bot
 Telegram bot for your Outline server
-</br></br>
 
 ## Client
 <row>
@@ -8,14 +7,12 @@ Telegram bot for your Outline server
     <img src="docs/client_pay.jpg" alt="client pay" width="200"/>
     <img src="docs/client_help.jpg" alt="client help" width="200"/>
 </row>
-</br></br>
 
 ## Admin
 <row>
     <img src="docs/admin_help.jpg" alt="client start" width="200"/>
     <img src="docs/admin_after_help.jpg" alt="client pay" width="200"/>
 </row>
-</br></br>
 
 ## Server:
 Export `Telegram bot token`, `Outline management API URL`, `card number`, `tonnames url` to environment
