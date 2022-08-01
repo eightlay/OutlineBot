@@ -26,3 +26,5 @@ bot.log
 
 # Go workspace file
 go.work
+HOWTOBUILD.md
+outlinebot

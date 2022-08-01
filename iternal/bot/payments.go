@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"math"
 	"net/http"
 	"os"
@@ -38,21 +39,34 @@ func getCardURL(telegramID int64, username string, price float64) (string, strin
 }
 
 func getPrice(platform string) (float64, error) {
+	priceUSD, err := getPriceUSD()
+	if err != nil {
+		return 0, err
+	}
+
 	switch platform {
 	case "TON":
 		tonusd, err := getRateTONUSD()
 		if err != nil {
 			return 0, err
 		}
-		return 1. / tonusd, nil
+		return priceUSD / tonusd, nil
 	case "CARD":
 		rubusd, err := getRateRUBUSD()
 		if err != nil {
 			return 0, err
 		}
-		return 1/rubusd + 1, nil
+		return priceUSD/rubusd + 1, nil
 	}
 	return 0, fmt.Errorf("no such platform '%v'", platform)
+}
+
+func getPriceUSD() (float64, error) {
+	d, err := getData()
+	if err != nil {
+		log.Print(err)
+	}
+	return d.PriceUSD, nil
 }
 
 func getRateTONUSD() (float64, error) {

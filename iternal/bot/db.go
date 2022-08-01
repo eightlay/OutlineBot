@@ -6,8 +6,14 @@ import (
 	"io/ioutil"
 )
 
+var dataPath string = "data.json"
+
 var usersPath string = "users.json"
 var users map[string]user
+
+type data struct {
+	PriceUSD float64 `json:"price_per_user_usd"`
+}
 
 func readDB() {
 	usersSource, err := ioutil.ReadFile(usersPath)
@@ -90,4 +96,16 @@ func getUserPaymentCode(telegramID int64, username string) (string, error) {
 		return "", fmt.Errorf("user @%v is not registered", username)
 	}
 	return users[hash(telegramID)].PaymentCode, nil
+}
+
+func getData() (*data, error) {
+	dataSource, err := ioutil.ReadFile(dataPath)
+	if err != nil {
+		return &data{1}, fmt.Errorf("can't read data file")
+	}
+
+	var d data
+	json.Unmarshal(dataSource, &d)
+
+	return &d, nil
 }
